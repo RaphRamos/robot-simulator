@@ -8,7 +8,6 @@ class Application
 
   def initialize
     @board = Board.new
-    # @robot = Robot.new
   end
 
   def validate!(command)
@@ -16,9 +15,10 @@ class Application
   end
 
   def place(x_axis, y_axis, direction)
-    return unless board.update_robot_position([x_axis, y_axis])
+    return unless board.within_boundaries?([x_axis, y_axis]) && Direction.valid?(direction)
 
     @robot = Robot.new(direction: direction)
+    board.update_robot_position([x_axis, y_axis])
   end
 
   def move

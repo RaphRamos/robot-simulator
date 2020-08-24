@@ -17,6 +17,7 @@ def main
   puts 'Starting ROBOT SIMULATOR...'
   app = Application.new
   if ARGV.empty?
+    show_usage
     run_interactive(app)
   else
     run_script(app, ARGV[0])

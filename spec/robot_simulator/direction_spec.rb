@@ -13,11 +13,16 @@ end
 describe Direction do
   let(:direction) { 'NORTH' }
 
-  describe '.validate!' do
-    subject(:validate!) { described_class.validate!(direction) }
+  describe '.valid?' do
+    subject(:valid?) { described_class.valid?(direction) }
 
     it { is_expected.to be true }
-    it_behaves_like 'invalid direction'
+
+    context 'with invalid direction' do
+      let(:direction) { 'NORTHWEST' }
+
+      it { is_expected.to be false }
+    end
   end
 
   describe '.left_from' do

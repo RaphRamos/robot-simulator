@@ -4,8 +4,7 @@ class Robot
   attr_reader :direction
 
   def initialize(direction: Direction::DIRECTIONS.first)
-    @direction = direction
-    Direction.validate!(direction)
+    update_direction(direction)
   end
 
   def move_from(position)
@@ -30,6 +29,6 @@ class Robot
   end
 
   def update_direction(direction)
-    @direction = direction if Direction.validate!(direction)
+    @direction = direction if Direction.valid?(direction)
   end
 end

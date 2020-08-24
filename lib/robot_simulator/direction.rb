@@ -5,21 +5,19 @@ module Direction
 
   DIRECTIONS = %w[NORTH EAST SOUTH WEST].freeze
 
-  def self.validate!(direction)
-    raise DirectionError, "Direction '#{direction}' is not valid." unless DIRECTIONS.include?(direction)
-
-    true
+  def self.valid?(direction)
+    DIRECTIONS.include?(direction)
   end
 
   def self.left_from(direction)
-    validate!(direction)
+    raise DirectionError, 'Invalid direction.' unless valid?(direction)
 
     index = DIRECTIONS.index(direction)
     DIRECTIONS[index - 1]
   end
 
   def self.right_from(direction)
-    validate!(direction)
+    raise DirectionError, 'Invalid direction.' unless valid?(direction)
 
     # making use of Ruby's negative indices
     index = DIRECTIONS.index(direction) - DIRECTIONS.size

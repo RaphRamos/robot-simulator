@@ -13,9 +13,11 @@ describe Robot do
     end
 
     context 'with invalid initial direction' do
-      subject(:robot) { described_class.new(direction: 'BLAH').direction }
+      subject(:robot) { described_class.new(direction: 'BLAH') }
 
-      it { is_expected.to be_nil }
+      it 'initializes with nil direction' do
+        expect(robot.direction).to be_nil
+      end
     end
   end
 

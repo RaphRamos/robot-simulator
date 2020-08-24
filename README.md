@@ -17,6 +17,20 @@ To load commands from a text file (from the project directory):
 $ ruby script/cli.rb script/example.txt
 ```
 
+### Running specs
+
+RSpec was the chosen test framework, to run the specs:
+
+```
+$ bundle exec rspec
+```
+
+To run the spec in documentation mode:
+
+```
+$ bundle exec rspec -fd
+```
+
 ### Brief
 
 The application is a simulation of a small robot moving on a board, of dimensions 5 units
